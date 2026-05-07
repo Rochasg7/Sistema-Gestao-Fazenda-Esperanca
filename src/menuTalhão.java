@@ -17,7 +17,7 @@ public class menuTalhão {
             System.out.println("2 - Listar Talhões");
             System.out.println("3 - Buscar Talhão");
             System.out.println("0 - Sair");
-            System.out.print("Opção: ");
+            System.out.print("Opeção: ");
 
             opcao = sc.nextInt();
             sc.nextLine();
