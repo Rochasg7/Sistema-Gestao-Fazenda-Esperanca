@@ -12,6 +12,7 @@ public class menuTalhão {
         int opcao;
 
         do {
+
             System.out.println("\n1 - Cadastrar Talhão");
             System.out.println("2 - Listar Talhões");
             System.out.println("3 - Buscar Talhão");
@@ -22,18 +23,23 @@ public class menuTalhão {
             sc.nextLine();
 
             switch (opcao) {
+
                 case 1:
                     cadastrarTalhao();
                     break;
+
                 case 2:
                     listarTalhoes();
                     break;
+
                 case 3:
                     buscarTalhao();
                     break;
+
                 case 0:
                     System.out.println("Encerrado.");
                     break;
+
                 default:
                     System.out.println("Opção inválida.");
             }
