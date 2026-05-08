@@ -70,3 +70,37 @@ alter table ordemdeservico
   references finalizacao(cod_final)
   on delete cascade 
   on update cascade
+
+
+
+
+  insert into cliente(cod_cliente, nome, empresa, telefone)
+  values(2, 'alegria', 'kayron', '3289423'),
+    (3, 'tristeza', 'kayron', '31111'),
+    (4, 'happy', 'kayron', '2222222');
+
+insert into tecnico(cod_tecnico, nome)
+  values(2, 'teste'),
+    (3, 'aass'),
+    (4, 'frango');
+
+insert into ordemdeservico (cod_ordem,data,defeito,equipamento,cod_cliente,cod_tecnico,cod_final)
+  values(2, '2000/10/12', 'frangoassado', 'pcgamer', 2, 2, 2),
+    (3,  '2000/10/12', 'frangoassadoaaaaaa', 'pcgameasdar', 2, 2, 2),
+    (4,  '2000/10/12', 'frangoassado', 'pcgasdaamer', 2, 2, 2);
+
+insert into servico (cod_servico, atividade)
+  values(2, 'l2@l2.com'),
+    (3, 'dasda'),
+    (4, 'l4@lasdasdas4.com');
+
+insert into finalizacao(cod_final, valor_total, data,data_entrega )
+  values(2, 3, '1033/10/30','1330/10/30'),
+    (3, 3333, '1033/10/30','1330/10/30'),
+    (4, 44, '1033/10/30','1033/10/30');
+
+select nome,telefone  from cliente;
+
+update finalizacao f set data_entrega = '1899-12-31';
+
+select * from finalizacao f ;
