@@ -1,4 +1,4 @@
-package Registros;
+package registros;
 
 public class Persistencia {
     

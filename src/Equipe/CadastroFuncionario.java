@@ -1,4 +1,4 @@
-package Equipe;
+package equipe;
 
 public class CadastroFuncionario {
     

@@ -1,4 +1,4 @@
-package Frota;
+package frota;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package Talhoes;
+package talhoes;
 
 public class Talhao {
 
