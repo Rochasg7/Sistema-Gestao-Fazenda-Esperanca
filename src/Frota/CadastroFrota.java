@@ -113,4 +113,31 @@ public class CadastroFrota {
         // Caso a placa não seja encontrada
         return false;
     }
+
+// BUSCAR TRATOR
+    public static void buscarTrator() {
+
+        System.out.println("\n--- BUSCAR TRATOR ---");
+
+        System.out.print("Digite a placa: ");
+
+        String placaDigitada = sc.nextLine();
+
+    // Percorre todos os tratores cadastrados
+        for(int i = 0; i < totalTratores; i++) {
+
+            if(tratores[i].placa.equalsIgnoreCase(placaDigitada)) {
+
+            System.out.println("\n===== TRATOR ENCONTRADO =====");
+
+            System.out.println("Placa: " + tratores[i].placa);
+
+            System.out.println("Capacidade: " + tratores[i].capacidade);
+
+            return;
+        }
+    }
+
+    System.out.println("Trator não encontrado.");
+    }
 }
