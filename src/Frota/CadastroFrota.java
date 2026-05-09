@@ -10,7 +10,7 @@ public class CadastroFrota {
 
     public static void cadastrarTrator() {
         Frota novoTrator = new Frota();
-        
+
         System.out.println("---CADASTRO DE TRATOR---");
         System.out.println("Placa: ");
         novoTrator.placa = sc.nextLine();
@@ -19,9 +19,9 @@ public class CadastroFrota {
         novoTrator.capacidade = sc.nextDouble();
 
         sc.nextLine();
-        
+
         tratores[totalTratores] = novoTrator;
-        
+
         totalTratores++;
 
         System.out.println("Trator cadastrado!");
