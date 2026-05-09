@@ -16,7 +16,7 @@ public class SistemaPrincipal {
             System.out.println("\n===== SISTEMA FAZENDA =====");
             System.out.println("1 - Talhões");
             System.out.println("2 - Funcionários");
-            System.out.println("3 - Tratores");
+            System.out.println("3 - Frota");
             System.out.println("4 - Colheita");
             System.out.println("0 - Sair");
             System.out.print("Opção: ");
@@ -31,6 +31,7 @@ public class SistemaPrincipal {
                     break;
                 case 3:
                     MenuFrota.menuFrota();
+                    break;
                 case 0:
                     System.out.println("Sistema encerrado.");
                     break;
