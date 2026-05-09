@@ -1,106 +1,103 @@
-create table cliente(
-  cod_cliente int primary KEY comment "Id do cliente",
-  nome varchar(30) not null default 'ni' comment "nome",
-  empresa varchar(30) not null default 'ni' comment "empresa",
-  telefone varchar(255) not null default 'ni' comment "telefone"
-);
+# Sistema de Gestão - Fazenda Esperança
 
-create table tecnico(
-  cod_tecnico int primary KEY comment "Id do tecnico",
-  nome varchar(30) not null default 'ni' comment "nome"
-);
+Trabalho desenvolvido para a disciplina de Desenvolvimento de Programas Estruturados e Modularização.
 
+## Integrantes
 
-create table ordemdeservico(
-  cod_ordem int primary KEY comment "Id da ordem",
-  data datetime,
-  defeito varchar(255)  default 'ni' comment "defeito",
-  equipamento varchar(255) not null default 'ni' comment "equipamento",
-  cod_cliente int not null default 0 comment "Id do cliente",
-  cod_tecnico int not null default 0 comment "Id do tecnico",
-  cod_final int not null default 0 comment "Id codigo final"
-);
+- Nome 1
+- Nome 2
+- Nome 3
+- Nome 4
 
-create table finalizacao(
-  cod_final int primary KEY comment "Codigo",
-  valor_total numeric(10,2) not null default 0 comment "valor total",
-  data datetime ,
-  data_entrega datetime 
-);
+---
 
-create table servico(
-  cod_servico int primary KEY comment "Codigo do serviço",
-  atividade varchar(255) not null default 'ni' comment "atividade"
-);
+# Estrutura do Projeto
 
-create table relacao_3(
-  cod_servico int not null default 0 comment "Id codigo servico",
-  cod_ordem int not null default 0 comment "Id codigo ordem"
-);
+## Módulos
 
-alter table relacao_3  
-  add constraint fk_servico foreign key(cod_servico)
-  references servico(cod_servico)
-  on delete cascade 
-  on update cascade
-  
+- equipe/
+- frota/
+- talhoes/
+- registros/
 
-alter table relacao_3  
-  add constraint fk_ordem foreign key(cod_ordem)
-  references ordemdeservico(cod_ordem)
-  on delete cascade 
-  on update cascade
-  
+---
 
-alter table ordemdeservico  
-  add constraint fk_cod_cliente foreign key(cod_cliente)
-  references cliente(cod_cliente)
-  on delete cascade 
-  on update cascade
-  
-  
-alter table ordemdeservico  
-  add constraint fk_cod_tecnico foreign key(cod_tecnico)
-  references tecnico(cod_tecnico)
-  on delete cascade 
-  on update cascade
-  
-alter table ordemdeservico  
-  add constraint fk_cod_final foreign key(cod_final)
-  references finalizacao(cod_final)
-  on delete cascade 
-  on update cascade
+# Diário da IA
 
+## 1. Ferramentas e bibliotecas que a IA tentou utilizar
 
+Durante o desenvolvimento, a IA sugeriu algumas estruturas e bibliotecas que ainda não haviam sido ensinadas em sala de aula.
 
+### Exemplos:
 
-  insert into cliente(cod_cliente, nome, empresa, telefone)
-  values(2, 'alegria', 'kayron', '3289423'),
-    (3, 'tristeza', 'kayron', '31111'),
-    (4, 'happy', 'kayron', '2222222');
+- ArrayList
+- Encapsulamento com getters e setters
+- Herança
+- Serialização de objetos
+- Banco de dados SQL
+- Streams do Java
+- APIs externas
 
-insert into tecnico(cod_tecnico, nome)
-  values(2, 'teste'),
-    (3, 'aass'),
-    (4, 'frango');
+O grupo optou por NÃO utilizar essas ferramentas para manter o projeto compatível com o conteúdo da disciplina.
 
-insert into ordemdeservico (cod_ordem,data,defeito,equipamento,cod_cliente,cod_tecnico,cod_final)
-  values(2, '2000/10/12', 'frangoassado', 'pcgamer', 2, 2, 2),
-    (3,  '2000/10/12', 'frangoassadoaaaaaa', 'pcgameasdar', 2, 2, 2),
-    (4,  '2000/10/12', 'frangoassado', 'pcgasdaamer', 2, 2, 2);
+---
 
-insert into servico (cod_servico, atividade)
-  values(2, 'l2@l2.com'),
-    (3, 'dasda'),
-    (4, 'l4@lasdasdas4.com');
+## 2. Como orientamos a IA para adaptar o código ao padrão da disciplina
 
-insert into finalizacao(cod_final, valor_total, data,data_entrega )
-  values(2, 3, '1033/10/30','1330/10/30'),
-    (3, 3333, '1033/10/30','1330/10/30'),
-    (4, 44, '1033/10/30','1033/10/30');
+Para adequar o código ao conteúdo estudado, utilizamos prompts solicitando:
 
-select nome,telefone  from cliente;
+- Uso apenas de Java básico
+- Vetores simples ao invés de ArrayList
+- Métodos estáticos
+- Estrutura procedural
+- Sem Programação Orientada a Objetos avançada
+- Sem APIs
+- Sem frameworks
+- Sem banco de dados
 
-update finalizacao f set data_entrega = '1899-12-31';
+### Exemplo de prompt utilizado:
 
-select * from finalizacao f ;
+"Refatore o código utilizando apenas Java básico, com vetores simples, métodos estáticos e sem utilizar ArrayList, herança, encapsulamento ou bibliotecas avançadas."
+
+---
+
+## 3. Problemas que a IA não resolveu corretamente
+
+Durante o desenvolvimento, algumas regras de negócio precisaram ser corrigidas manualmente pelo grupo.
+
+### Exemplos:
+
+- Validação de capacidade máxima do trator
+- Correção da validação de placas duplicadas
+- Ajuste de integração entre packages
+- Correção de conflitos entre nomes de pastas e packages
+- Ajuste na leitura do Scanner após nextDouble()
+
+Esses problemas foram identificados durante os testes do sistema e corrigidos manualmente pelos integrantes.
+
+---
+
+# Funcionalidades do Sistema
+
+- Cadastro de funcionários
+- Cadastro de talhões
+- Cadastro de tratores
+- Registro de colheita
+- Validação de capacidade
+- Relatórios
+- Persistência em arquivo
+
+---
+
+# Tecnologias Utilizadas
+
+- Java
+- Git
+- GitHub
+- VS Code
+
+---
+
+# Observações
+
+O sistema foi desenvolvido utilizando apenas os conteúdos abordados na disciplina.
