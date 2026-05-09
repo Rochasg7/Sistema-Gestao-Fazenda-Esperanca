@@ -1,4 +1,4 @@
-package talhoes;
+package Talhoes;
 
 import java.util.ArrayList;
 import java.util.Scanner;

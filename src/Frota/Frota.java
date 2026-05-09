@@ -1,4 +1,4 @@
-package frota;
+package Frota;
 
 public class Frota {
     String placa;
