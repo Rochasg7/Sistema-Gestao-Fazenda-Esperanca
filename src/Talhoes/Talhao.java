@@ -6,5 +6,6 @@ public class Talhao {
     String nome;
     String variedadeCafe;
     double estimativaLitros;
+    double producaoAtual;
 
 }
