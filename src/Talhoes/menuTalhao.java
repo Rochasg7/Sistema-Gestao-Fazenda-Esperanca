@@ -12,7 +12,7 @@ public class menuTalhao {
     // CONTADOR
     static int totalTalhoes = 0;
 
-    public static void main(String[] args) {
+    public static void menuTalhao(String[] args) {
 
         int opcao;
 

@@ -6,7 +6,7 @@ public class listarTalhao {
 
         if (menuTalhao.totalTalhoes == 0) {
 
-            System.out.println("Nenhum talhão cadastrado.");
+            System.out.println("=====Nenhum talhão cadastrado.=====");
             return;
         }
 
@@ -27,7 +27,7 @@ public class listarTalhao {
         // VALIDAÇÃO
         if (escolha < 1 || escolha > menuTalhao.totalTalhoes) {
 
-            System.out.println("Talhão inválido.");
+            System.out.println("=====Talhão inválido.=====");
             return;
         }
 

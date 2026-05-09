@@ -15,7 +15,7 @@ public class cadastrarTalhao {
 
             if (menuTalhao.talhoes[i].codigo.equals(codigo)) {
 
-                System.out.println("Já existe um talhão com esse código!");
+                System.out.println("=====Já existe um talhão com esse código!=====");
                 return;
             }
         }
@@ -37,6 +37,6 @@ public class cadastrarTalhao {
 
         menuTalhao.totalTalhoes++;
 
-        System.out.println("Talhão cadastrado!");
+        System.out.println("=====Talhão cadastrado!=====");
     }
 }

@@ -6,7 +6,7 @@ public class buscarTalhao {
 
         if (menuTalhao.totalTalhoes == 0) {
 
-            System.out.println("Nenhum talhão cadastrado.");
+            System.out.println("=====Nenhum talhão cadastrado.=====");
             return;
         }
 
@@ -37,6 +37,6 @@ public class buscarTalhao {
             }
         }
 
-        System.out.println("Talhão não encontrado.");
+        System.out.println("=====Talhão não encontrado.=====");
     }
 }
