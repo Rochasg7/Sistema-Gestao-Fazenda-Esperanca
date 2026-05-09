@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import Frota.MenuFrota;
 import Talhoes.menuTalhao;
 
 public class SistemaPrincipal {
@@ -28,7 +29,8 @@ public class SistemaPrincipal {
                 case 1:
                     menuTalhao.menuTalhao();
                     break;
-
+                case 3:
+                    MenuFrota.menuFrota();
                 case 0:
                     System.out.println("Sistema encerrado.");
                     break;
