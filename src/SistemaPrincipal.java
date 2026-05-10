@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import Registros.RegistrosService;
+import Registros.MenuRegistro;
 import Frota.MenuFrota;
 import Talhoes.menuTalhao;
 
@@ -31,6 +33,9 @@ public class SistemaPrincipal {
                     break;
                 case 3:
                     MenuFrota.menuFrota();
+                    break;
+                case 4:
+                    MenuRegistro.menuRegistro();
                     break;
                 case 0:
                     System.out.println("Sistema encerrado.");
