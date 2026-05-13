@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 import Registros.RegistrosService;
 import Registros.MenuRegistro;
+import Equipe.MenuEquipe;
 import Frota.MenuFrota;
 import Talhoes.menuTalhao;
 
@@ -30,6 +31,9 @@ public class SistemaPrincipal {
 
                 case 1:
                     menuTalhao.menuTalhao();
+                    break;
+                case 2:
+                    MenuEquipe.menuEquipe();
                     break;
                 case 3:
                     MenuFrota.menuFrota();
