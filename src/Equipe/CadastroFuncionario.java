@@ -1,5 +1,7 @@
 package Equipe;
 
+import Equipe.PersistenciaFuncionario;
+
 import java.util.Scanner;
 
 import Dados.Registros;
@@ -32,6 +34,8 @@ public class CadastroFuncionario {
         Registros.funcionarios[Registros.totalFuncionarios] = funcionario;
 
         Registros.totalFuncionarios++;
+
+        PersistenciaFuncionario.salvarFuncionariosCSV();
 
         System.out.println("Funcionário cadastrado com sucesso.");
     }

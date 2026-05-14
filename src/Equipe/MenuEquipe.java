@@ -1,50 +1,50 @@
-package Equipe;
+    package Equipe;
 
-import java.util.Scanner;
+    import java.util.Scanner;
 
-public class MenuEquipe {
+    public class MenuEquipe {
 
-    static Scanner sc = new Scanner(System.in);
+        static Scanner sc = new Scanner(System.in);
 
-    public static void menuEquipe() {
+        public static void menuEquipe() {
 
-        int opcao;
+            int opcao;
 
-        do {
+            do {
 
-            System.out.println("\n===== MENU FUNCIONÁRIOS =====");
-            System.out.println("1 - Cadastrar Funcionário");
-            System.out.println("2 - Listar Funcionários");
-            System.out.println("3 - Buscar Funcionário");
-            System.out.println("0 - Voltar");
+                System.out.println("\n===== MENU FUNCIONÁRIOS =====");
+                System.out.println("1 - Cadastrar Funcionário");
+                System.out.println("2 - Listar Funcionários");
+                System.out.println("3 - Buscar Funcionário");
+                System.out.println("0 - Voltar");
 
-            System.out.print("Opção: ");
+                System.out.print("Opção: ");
 
-            opcao = sc.nextInt();
-            sc.nextLine();
+                opcao = sc.nextInt();
+                sc.nextLine();
 
-            switch (opcao) {
+                switch (opcao) {
 
-                case 1:
-                    CadastroFuncionario.cadastrarFuncionario();
-                    break;
+                    case 1:
+                        CadastroFuncionario.cadastrarFuncionario();
+                        break;
 
-                case 2:
-                    CadastroFuncionario.listarFuncionarios();
-                    break;
+                    case 2:
+                        CadastroFuncionario.listarFuncionarios();
+                        break;
 
-                case 3:
-                    CadastroFuncionario.buscarFuncionario();
-                    break;
+                    case 3:
+                        CadastroFuncionario.buscarFuncionario();
+                        break;
 
-                case 0:
-                    System.out.println("Voltando...");
-                    break;
+                    case 0:
+                        System.out.println("Voltando...");
+                        break;
 
-                default:
-                    System.out.println("Opção inválida.");
-            }
+                    default:
+                        System.out.println("Opção inválida.");
+                }
 
-        } while (opcao != 0);
+            } while (opcao != 0);
+        }
     }
-}
