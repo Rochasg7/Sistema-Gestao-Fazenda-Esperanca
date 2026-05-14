@@ -1,5 +1,5 @@
 package Registros;
 
-public class Relatorios {
+public class RelatoriosServico {
 
 }

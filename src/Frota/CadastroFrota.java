@@ -27,7 +27,7 @@ public class CadastroFrota {
         // Cria um novo objeto do tipo Frota
         Frota novoTrator = new Frota();
 
-        System.out.println("--- CADASTRO DE TRATOR ---");
+        System.out.println("=== CADASTRO DE TRATOR ===");
 
         // Recebe a placa do trator
         System.out.println("Placa: ");
@@ -60,7 +60,12 @@ public class CadastroFrota {
     // LISTAGEM DOS TRATORES CADASTRADOS
     public static void listarTratores() {
 
-        System.out.println("--- LISTA DE TRATORES ---");
+        System.out.println("=== LISTA DE TRATORES ===");
+
+        if (totalTratores == 0){
+            System.out.println("Nenhum trator cadastrado.");
+            return;
+        }
 
         // Percorre o vetor mostrando os tratores cadastrados
         for(int i = 0; i < totalTratores; i++) {
@@ -117,7 +122,7 @@ public class CadastroFrota {
 // BUSCAR TRATOR
     public static void buscarTrator() {
 
-        System.out.println("\n--- BUSCAR TRATOR ---");
+        System.out.println("\n=== BUSCAR TRATOR ===");
 
         System.out.print("Digite a placa: ");
 
