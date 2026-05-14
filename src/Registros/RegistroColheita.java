@@ -4,7 +4,7 @@ public class RegistroColheita {
 
     String data;
     String matriculaFuncionario;
-    int codigoTalhao;
+    String codigoTalhao;
     String placaTrator;
     double litros;
     String destino;

@@ -2,10 +2,10 @@ package Talhoes;
 
 public class Talhao {
 
-    String codigo;
-    String nome;
-    String variedadeCafe;
-    double estimativaLitros;
-    double producaoAtual;
+    public String codigo;
+    public String nome;
+    public String variedadeCafe;
+    public double estimativaLitros;
+    public double producaoAtual;
 
 }

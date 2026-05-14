@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Equipe.CadastroFuncionario;
+import Talhoes.menuTalhao;
+import Frota.CadastroFrota;
 
 public class RegistrosService {
 
@@ -27,15 +29,31 @@ public class RegistrosService {
         }
 
         System.out.println("Digite o código do talhão:");
-        registro.codigoTalhao = sc.nextInt();
+        registro.codigoTalhao = sc.nextLine();
 
-        sc.nextLine();
+        if (!talhaoExiste(registro.codigoTalhao)) {
+
+        System.out.println("Talhão não encontrado.");
+        return;
+    }
 
         System.out.println("Digite a placa do trator:");
         registro.placaTrator = sc.nextLine();
 
+        if (!CadastroFrota.placaExiste(registro.placaTrator)) {
+
+        System.out.println("Trator não encontrado.");
+        return;
+    }
+
         System.out.println("Digite a quantidade de litros:");
         registro.litros = sc.nextDouble();
+
+        if (!CadastroFrota.validarCapacidade(registro.placaTrator, registro.litros)) {
+
+        System.out.println("Capacidade do trator excedida.");
+        return;
+    }
 
         sc.nextLine();
 
@@ -61,6 +79,19 @@ public class RegistrosService {
         System.out.println("---------------------------");
     }
     }
+
+    public static boolean talhaoExiste(String codigo) {
+
+    for (int i = 0; i < menuTalhao.totalTalhoes; i++) {
+
+        if (menuTalhao.talhoes[i].codigo.equalsIgnoreCase(codigo)) {
+
+            return true;
+        }
+    }
+
+    return false;
+}
 
 }
 
