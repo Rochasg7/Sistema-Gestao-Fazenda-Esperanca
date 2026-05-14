@@ -35,7 +35,7 @@ public class RegistrosService {
 
         System.out.println("Talhão não encontrado.");
         return;
-    }
+        }
 
         System.out.println("Digite a placa do trator:");
         registro.placaTrator = sc.nextLine();
@@ -44,7 +44,7 @@ public class RegistrosService {
 
         System.out.println("Trator não encontrado.");
         return;
-    }
+        }
 
         System.out.println("Digite a quantidade de litros:");
         registro.litros = sc.nextDouble();
@@ -53,7 +53,7 @@ public class RegistrosService {
 
         System.out.println("Capacidade do trator excedida.");
         return;
-    }
+        }
 
         sc.nextLine();
 
@@ -62,10 +62,12 @@ public class RegistrosService {
 
         registros.add(registro);
 
-    System.out.println("Registro realizado com sucesso!");
-    }
+        Persistencia.salvarRegistros();
 
-    public static void listarRegistros() {
+        System.out.println("Registro realizado com sucesso!");
+        }
+
+        public static void listarRegistros() {
 
         for (RegistroColheita registro : registros) {
 
@@ -77,12 +79,12 @@ public class RegistrosService {
         System.out.println("Destino: " + registro.destino);
 
         System.out.println("---------------------------");
-    }
-    }
+        }
+        }
 
-    public static boolean talhaoExiste(String codigo) {
+        public static boolean talhaoExiste(String codigo) {
 
-    for (int i = 0; i < menuTalhao.totalTalhoes; i++) {
+        for (int i = 0; i < menuTalhao.totalTalhoes; i++) {
 
         if (menuTalhao.talhoes[i].codigo.equalsIgnoreCase(codigo)) {
 

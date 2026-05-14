@@ -5,12 +5,15 @@ import Registros.MenuRegistro;
 import Equipe.MenuEquipe;
 import Frota.MenuFrota;
 import Talhoes.menuTalhao;
+import Registros.Persistencia;
 
 public class SistemaPrincipal {
 
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
+
+        Persistencia.carregarRegistros();
 
         int opcao;
 
