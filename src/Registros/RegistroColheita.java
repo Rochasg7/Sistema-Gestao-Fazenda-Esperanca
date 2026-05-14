@@ -3,7 +3,7 @@ package Registros;
 public class RegistroColheita {
 
     String data;
-    int matriculaFuncionario;
+    String matriculaFuncionario;
     int codigoTalhao;
     String placaTrator;
     double litros;

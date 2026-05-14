@@ -3,6 +3,8 @@ package Registros;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Equipe.CadastroFuncionario;
+
 public class RegistrosService {
 
     public static ArrayList<RegistroColheita> registros = new ArrayList<>();
@@ -16,7 +18,13 @@ public class RegistrosService {
         registro.data = sc.nextLine();
 
         System.out.println("Digite a matrícula do funcionário:");
-        registro.matriculaFuncionario = sc.nextInt();
+        registro.matriculaFuncionario = sc.nextLine();
+
+        if (!CadastroFuncionario.matriculaExiste(registro.matriculaFuncionario)) {
+
+            System.out.println("Funcionário não encontrado. ");
+            return;
+        }
 
         System.out.println("Digite o código do talhão:");
         registro.codigoTalhao = sc.nextInt();
