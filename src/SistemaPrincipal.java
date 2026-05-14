@@ -4,7 +4,6 @@ import Registros.RegistrosService;
 import Registros.MenuRegistro;
 import Equipe.MenuEquipe;
 import Frota.MenuFrota;
-import Frota.PersistenciaFrota;
 import Talhoes.menuTalhao;
 import Talhoes.persistenciaTalhao;
 import Registros.Persistencia;
@@ -16,11 +15,7 @@ public class SistemaPrincipal {
     public static void main(String[] args) {
 
         Persistencia.carregarRegistros();
-<<<<<<< HEAD
-        PersistenciaFrota.carregarFrota();
-=======
         persistenciaTalhao.carregarTalhoes();
->>>>>>> 9a3a347 (talhao chupeta)
 
         int opcao;
 
