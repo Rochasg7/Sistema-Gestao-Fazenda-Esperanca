@@ -7,7 +7,7 @@ public class menuTalhao {
     static Scanner sc = new Scanner(System.in);
 
     // VETOR DE TALHÕES
-    public static  Talhao[] talhoes = new Talhao[100];
+    public static Talhao[] talhoes = new Talhao[100];
 
     // CONTADOR
     public static int totalTalhoes = 0;

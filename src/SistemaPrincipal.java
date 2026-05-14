@@ -4,6 +4,7 @@ import Registros.RegistrosService;
 import Registros.MenuRegistro;
 import Equipe.MenuEquipe;
 import Frota.MenuFrota;
+import Frota.PersistenciaFrota;
 import Talhoes.menuTalhao;
 import Registros.Persistencia;
 
@@ -14,6 +15,7 @@ public class SistemaPrincipal {
     public static void main(String[] args) {
 
         Persistencia.carregarRegistros();
+        PersistenciaFrota.carregarFrota();
 
         int opcao;
 
