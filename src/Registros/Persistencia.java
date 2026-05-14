@@ -12,7 +12,7 @@ public class Persistencia {
 
         try {
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter("registros.txt"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("registros.csv"));
 
             for (RegistroColheita registro : RegistrosService.registros) {
 
@@ -42,7 +42,7 @@ public class Persistencia {
 
     try {
 
-        BufferedReader reader = new BufferedReader(new FileReader("registros.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("registros.csv"));
 
         String linha;
 
