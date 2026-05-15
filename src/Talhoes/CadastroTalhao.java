@@ -51,7 +51,7 @@ public class CadastroTalhao {
         totalTalhoes++;
 
         // Salva os dados no arquivo CSV
-        PersistenciaTalhao.salvarTalhoesCSV();
+        persistenciaTalhao.salvarTalhoesCSV();
 
         System.out.println("Talhão cadastrado com sucesso.");
     }
@@ -83,20 +83,38 @@ public class CadastroTalhao {
         }
     }
 
-
     // BUSCAR TALHÃO
     public static void buscarTalhao() {
 
-        System.out.print("Digite o código: ");
+        // Verifica se existem talhões cadastrados
+        if (totalTalhoes == 0) {
 
-        String codigo = sc.nextLine();
+            System.out.println("Nenhum talhão cadastrado.");
+            return;
+        }
 
-        // Percorre todos os talhões procurando o código informado
+        // Mini lista
+        System.out.println("\n===== TALHÕES DISPONÍVEIS =====");
+
         for (int i = 0; i < totalTalhoes; i++) {
 
             Talhao talhao = talhoes[i];
 
-            // Verifica se o código digitado é igual ao código cadastrado
+            System.out.println(
+                    "Código: " + talhao.codigo +
+                            " | Nome: " + talhao.nome);
+        }
+
+        // Solicita o código
+        System.out.print("\nDigite o código do talhão: ");
+
+        String codigo = sc.nextLine();
+
+        // Busca o talhão
+        for (int i = 0; i < totalTalhoes; i++) {
+
+            Talhao talhao = talhoes[i];
+
             if (talhao.codigo.equalsIgnoreCase(codigo)) {
 
                 System.out.println("\n===== TALHÃO ENCONTRADO =====");

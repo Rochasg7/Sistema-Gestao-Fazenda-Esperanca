@@ -9,8 +9,8 @@ import Frota.PersistenciaFrota;
 import Registros.MenuRegistro;
 import Registros.PersistenciaRegistros;
 
-import Talhoes.MenuTalhao;
-import Talhoes.PersistenciaTalhao;
+import Talhoes.menuTalhao;
+import Talhoes.persistenciaTalhao;
 
 public class SistemaPrincipal {
 
@@ -25,7 +25,7 @@ public class SistemaPrincipal {
         PersistenciaRegistros.carregarRegistrosCSV();
 
         // Carrega os talhões salvos no CSV
-        PersistenciaTalhao.carregarTalhoes();
+        persistenciaTalhao.carregarTalhoes();
 
         // Carrega os funcionários salvos no CSV
         PersistenciaFuncionario.carregarFuncionariosCSV();
@@ -57,7 +57,7 @@ public class SistemaPrincipal {
                 case 1:
 
                     // Abre o menu de talhões
-                    MenuTalhao.abrirMenuTalhao();
+                    menuTalhao.abrirMenuTalhao();
                     break;
 
                 case 2:
