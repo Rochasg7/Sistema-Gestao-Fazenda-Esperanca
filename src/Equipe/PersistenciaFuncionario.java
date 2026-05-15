@@ -16,7 +16,7 @@ public class PersistenciaFuncionario {
             // Cria o arquivo CSV onde os funcionários serão armazenados
             BufferedWriter writer =
                     new BufferedWriter(
-                            new FileWriter("funcionarios.csv")
+                            new FileWriter("banco/funcionarios.csv")
                     );
 
             // Percorre todos os funcionários cadastrados
@@ -55,7 +55,7 @@ public class PersistenciaFuncionario {
             // Abre o arquivo CSV para leitura
             BufferedReader reader =
                     new BufferedReader(
-                            new FileReader("funcionarios.csv")
+                            new FileReader("banco/funcionarios.csv")
                     );
 
             String linha;

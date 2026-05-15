@@ -81,6 +81,26 @@ public class CadastroFrota {
     // BUSCAR TRATOR
     public static void buscarTrator() {
 
+        // Verifica se existem tratores cadastrados
+    if (totalTratores == 0) {
+
+        System.out.println("Nenhum trator cadastrado.");
+        return;
+    }
+
+    // Mostra uma lista rápida dos tratores disponíveis
+    // para ajudar o usuário a visualizar as placas
+    System.out.println("\n===== TRATORES DISPONÍVEIS =====");
+
+    for (int i = 0; i < totalTratores; i++) {
+
+        Frota trator = tratores[i];
+
+        System.out.println(
+            "Placa: " + trator.placa +
+                " | Capacidade: " + trator.capacidade);
+    }
+
         System.out.println("\n===== BUSCAR TRATOR =====");
         System.out.print("Digite a placa: ");
 

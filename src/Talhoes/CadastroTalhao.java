@@ -101,8 +101,8 @@ public class CadastroTalhao {
             Talhao talhao = talhoes[i];
 
             System.out.println(
-                    "Código: " + talhao.codigo +
-                            " | Nome: " + talhao.nome);
+                "Código: " + talhao.codigo +
+                    " | Nome: " + talhao.nome);
         }
 
         // Solicita o código

@@ -15,7 +15,7 @@ public class persistenciaTalhao {
 
             // Cria o arquivo CSV onde os dados serão armazenados
             BufferedWriter writer = new BufferedWriter(
-                    new FileWriter("talhoes.csv"));
+                    new FileWriter("banco/talhoes.csv"));
 
             // Percorre todos os talhões cadastrados
             for (int i = 0; i < CadastroTalhao.totalTalhoes; i++) {
@@ -52,7 +52,7 @@ public class persistenciaTalhao {
 
             // Abre o arquivo CSV para leitura
             BufferedReader reader = new BufferedReader(
-                    new FileReader("talhoes.csv"));
+                    new FileReader("banco/talhoes.csv"));
 
             String linha;
 

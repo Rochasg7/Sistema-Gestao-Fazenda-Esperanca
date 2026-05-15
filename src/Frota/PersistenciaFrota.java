@@ -15,7 +15,7 @@ public class PersistenciaFrota {
 
             // Cria o arquivo CSV onde os tratores serão armazenados
             BufferedWriter writer = new BufferedWriter(
-                    new FileWriter("frota.csv")
+                    new FileWriter("banco/frota.csv")
             );
 
             // Percorre todos os tratores cadastrados
@@ -51,7 +51,7 @@ public class PersistenciaFrota {
 
             // Abre o arquivo CSV para leitura
             BufferedReader reader = new BufferedReader(
-                    new FileReader("frota.csv")
+                    new FileReader("banco/frota.csv")
             );
 
             String linha;

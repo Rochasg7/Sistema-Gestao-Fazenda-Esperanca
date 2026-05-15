@@ -81,31 +81,54 @@ public class CadastroFuncionario {
     }
 
     // BUSCAR FUNCIONÁRIO
-    public static void buscarFuncionario() {
+public static void buscarFuncionario() {
 
-        System.out.print("Digite a matrícula: ");
+    // Verifica se existem funcionários cadastrados
+    if (totalFuncionarios == 0) {
 
-        String matricula = sc.nextLine();
+        System.out.println("Nenhum funcionário cadastrado.");
 
-        // Percorre todos os funcionários cadastrados
-        for (int i = 0; i < totalFuncionarios; i++) {
-
-            Funcionario funcionario = funcionarios[i];
-
-            // Verifica se a matrícula existe
-            if (funcionario.matricula.equalsIgnoreCase(matricula)) {
-
-                System.out.println("\n===== FUNCIONÁRIO ENCONTRADO =====");
-                System.out.println("Nome: " + funcionario.nome);
-                System.out.println("Matrícula: " + funcionario.matricula);
-                System.out.println("Contrato: " + funcionario.tipoContrato);
-
-                return;
-            }
-        }
-
-        System.out.println("Funcionário não encontrado.");
+        return;
     }
+
+    // Mostra uma lista rápida para ajudar o usuário
+    // a visualizar as matrículas disponíveis
+    System.out.println("\n===== FUNCIONÁRIOS DISPONÍVEIS =====");
+
+    for (int i = 0; i < totalFuncionarios; i++) {
+
+        Funcionario funcionario = funcionarios[i];
+
+        System.out.println(
+            "Matrícula: " + funcionario.matricula +
+                " | Nome: " + funcionario.nome);
+    }
+
+    System.out.println("\n===== BUSCAR FUNCIONÁRIO =====");
+
+    System.out.print("Digite a matrícula: ");
+
+    String matricula = sc.nextLine();
+
+    // Percorre todos os funcionários cadastrados
+    for (int i = 0; i < totalFuncionarios; i++) {
+
+        Funcionario funcionario = funcionarios[i];
+
+        // Verifica se a matrícula existe
+        if (funcionario.matricula.equalsIgnoreCase(matricula)) {
+
+            System.out.println("\n===== FUNCIONÁRIO ENCONTRADO =====");
+            System.out.println("Nome: " + funcionario.nome);
+            System.out.println("Matrícula: " + funcionario.matricula);
+            System.out.println("Contrato: " + funcionario.tipoContrato);
+
+            return;
+        }
+    }
+
+    System.out.println("Funcionário não encontrado.");
+}
 
     // VALIDAR MATRÍCULA
     public static boolean matriculaExiste(String matricula) {

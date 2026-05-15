@@ -15,7 +15,7 @@ public class PersistenciaRegistros {
 
             // Cria o arquivo CSV onde os registros serão armazenados
             BufferedWriter writer = new BufferedWriter(
-                    new FileWriter("registros.csv"));
+                    new FileWriter("banco/registros.csv"));
 
             // Percorre todos os registros cadastrados
             for (int i = 0; i < RegistrosService.totalRegistros; i++) {
@@ -53,7 +53,7 @@ public class PersistenciaRegistros {
 
             // Abre o arquivo CSV para leitura
             BufferedReader reader = new BufferedReader(
-                    new FileReader("registros.csv"));
+                    new FileReader("banco/registros.csv"));
 
             String linha;
 
