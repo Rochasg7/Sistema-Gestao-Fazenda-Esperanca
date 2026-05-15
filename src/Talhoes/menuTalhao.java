@@ -33,25 +33,21 @@ public class menuTalhao {
                 case 1:
 
                     CadastroTalhao.cadastrarTalhao();
-
                     break;
 
                 case 2:
 
                     CadastroTalhao.listarTalhoes();
-
                     break;
 
                 case 3:
 
                     CadastroTalhao.buscarTalhao();
-
                     break;
 
                 case 0:
 
                     System.out.println("Voltando...");
-
                     break;
 
                 default:

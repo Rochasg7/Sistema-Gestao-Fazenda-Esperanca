@@ -34,27 +34,23 @@ public class MenuFrota {
 
                     // Abre o cadastro de tratores
                     CadastroFrota.cadastrarTrator();
-
                     break;
 
                 case 2:
 
                     // Lista todos os tratores cadastrados
                     CadastroFrota.listarTratores();
-
                     break;
 
                 case 3:
 
                     // Busca um trator pela placa
                     CadastroFrota.buscarTrator();
-
                     break;
 
                 case 0:
 
                     System.out.println("Voltando...");
-
                     break;
 
                 default:
