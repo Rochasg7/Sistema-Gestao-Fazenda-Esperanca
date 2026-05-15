@@ -2,10 +2,18 @@ package Talhoes;
 
 import java.util.Scanner;
 
-public class cadastrarTalhao {
+public class CadastroTalhao {
 
+    // Scanner utilizado para leitura dos dados digitados
     static Scanner sc = new Scanner(System.in);
 
+    // Vetor responsável por armazenar os talhões cadastrados
+    static Talhao[] talhoes = new Talhao[100];
+
+    // Contador de talhões cadastrados
+    static int totalTalhoes = 0;
+
+    // CADASTRAR TALHÃO
     public static void cadastrarTalhao() {
 
         Talhao talhao = new Talhao();
@@ -13,11 +21,14 @@ public class cadastrarTalhao {
         System.out.println("\n===== CADASTRO TALHÃO =====");
 
         System.out.print("Código: ");
+
         talhao.codigo = sc.nextLine();
 
+        // Verifica se já existe um talhão com esse código
         if (codigoExiste(talhao.codigo)) {
 
             System.out.println("Código já cadastrado.");
+
             return;
         }
 
@@ -33,28 +44,35 @@ public class cadastrarTalhao {
         System.out.print("Produção atual: ");
         talhao.producaoAtual = Double.parseDouble(sc.nextLine());
 
-        menuTalhao.talhoes[menuTalhao.totalTalhoes] = talhao;
+        // Guarda o talhão dentro do vetor
+        talhoes[totalTalhoes] = talhao;
 
-        menuTalhao.totalTalhoes++;
+        // Aumenta o contador de talhões cadastrados
+        totalTalhoes++;
 
-        persistenciaTalhao.salvarTalhoesCSV();
+        // Salva os dados no arquivo CSV
+        PersistenciaTalhao.salvarTalhoesCSV();
 
         System.out.println("Talhão cadastrado com sucesso.");
     }
 
+    // LISTAR TALHÕES
     public static void listarTalhoes() {
 
-        if (menuTalhao.totalTalhoes == 0) {
+        // Verifica se existe pelo menos um talhão cadastrado
+        if (totalTalhoes == 0) {
 
             System.out.println("Nenhum talhão cadastrado.");
+
             return;
         }
 
         System.out.println("\n===== LISTA DE TALHÕES =====");
 
-        for (int i = 0; i < menuTalhao.totalTalhoes; i++) {
+        // Percorre todos os talhões cadastrados
+        for (int i = 0; i < totalTalhoes; i++) {
 
-            Talhao talhao = menuTalhao.talhoes[i];
+            Talhao talhao = talhoes[i];
 
             System.out.println("----------------------");
             System.out.println("Código: " + talhao.codigo);
@@ -65,19 +83,23 @@ public class cadastrarTalhao {
         }
     }
 
+
+    // BUSCAR TALHÃO
     public static void buscarTalhao() {
 
         System.out.print("Digite o código: ");
 
         String codigo = sc.nextLine();
 
-        for (int i = 0; i < menuTalhao.totalTalhoes; i++) {
+        // Percorre todos os talhões procurando o código informado
+        for (int i = 0; i < totalTalhoes; i++) {
 
-            Talhao talhao = menuTalhao.talhoes[i];
+            Talhao talhao = talhoes[i];
 
+            // Verifica se o código digitado é igual ao código cadastrado
             if (talhao.codigo.equalsIgnoreCase(codigo)) {
 
-                System.out.println("\nTalhão encontrado:");
+                System.out.println("\n===== TALHÃO ENCONTRADO =====");
                 System.out.println("Código: " + talhao.codigo);
                 System.out.println("Nome: " + talhao.nome);
                 System.out.println("Variedade: " + talhao.variedadeCafe);
@@ -91,11 +113,14 @@ public class cadastrarTalhao {
         System.out.println("Talhão não encontrado.");
     }
 
+    // VALIDAR CÓDIGO
     public static boolean codigoExiste(String codigo) {
 
-        for (int i = 0; i < menuTalhao.totalTalhoes; i++) {
+        // Percorre todos os talhões cadastrados
+        for (int i = 0; i < totalTalhoes; i++) {
 
-            if (menuTalhao.talhoes[i].codigo.equalsIgnoreCase(codigo)) {
+            // Verifica se já existe um talhão com o código informado
+            if (talhoes[i].codigo.equalsIgnoreCase(codigo)) {
 
                 return true;
             }

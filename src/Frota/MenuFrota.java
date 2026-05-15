@@ -4,9 +4,11 @@ import java.util.Scanner;
 
 public class MenuFrota {
 
+    // Scanner utilizado para leitura das opções do menu
     static Scanner sc = new Scanner(System.in);
 
-    public static void menuFrota() {
+    // MENU DA FROTA
+    public static void abrirMenuFrota() {
 
         int opcao;
 
@@ -26,22 +28,25 @@ public class MenuFrota {
             // Limpa o buffer do Scanner
             sc.nextLine();
 
-            switch(opcao) {
+            switch (opcao) {
 
                 case 1:
 
+                    // Abre o cadastro de tratores
                     CadastroFrota.cadastrarTrator();
 
                     break;
 
                 case 2:
 
+                    // Lista todos os tratores cadastrados
                     CadastroFrota.listarTratores();
 
                     break;
 
                 case 3:
 
+                    // Busca um trator pela placa
                     CadastroFrota.buscarTrator();
 
                     break;
@@ -57,6 +62,6 @@ public class MenuFrota {
                     System.out.println("Opção inválida.");
             }
 
-        } while(opcao != 0);
+        } while (opcao != 0);
     }
 }

@@ -1,15 +1,19 @@
 package Equipe;
 
-import Equipe.PersistenciaFuncionario;
-
 import java.util.Scanner;
-
-import Dados.Registros;
 
 public class CadastroFuncionario {
 
+    // Scanner utilizado para leitura dos dados
     static Scanner sc = new Scanner(System.in);
 
+    // Vetor responsável por armazenar os funcionários
+    static Funcionario[] funcionarios = new Funcionario[100];
+
+    // Contador de funcionários cadastrados
+    static int totalFuncionarios = 0;
+
+    // CADASTRAR FUNCIONÁRIO
     public static void cadastrarFuncionario() {
 
         Funcionario funcionario = new Funcionario();
@@ -17,63 +21,81 @@ public class CadastroFuncionario {
         System.out.println("\n===== CADASTRO FUNCIONÁRIO =====");
 
         System.out.print("Nome: ");
+
         funcionario.nome = sc.nextLine();
 
         System.out.print("Matrícula: ");
+
         funcionario.matricula = sc.nextLine();
 
+        // Verifica se a matrícula já foi cadastrada
         if (matriculaExiste(funcionario.matricula)) {
 
             System.out.println("Matrícula já cadastrada.");
+
             return;
         }
 
         System.out.print("Tipo de contrato: ");
+
         funcionario.tipoContrato = sc.nextLine();
 
-        Registros.funcionarios[Registros.totalFuncionarios] = funcionario;
+        // Armazena o funcionário no vetor
+        funcionarios[totalFuncionarios] = funcionario;
 
-        Registros.totalFuncionarios++;
+        // Incrementa o contador de funcionários
+        totalFuncionarios++;
 
+        // Salva os funcionários no CSV
         PersistenciaFuncionario.salvarFuncionariosCSV();
 
         System.out.println("Funcionário cadastrado com sucesso.");
     }
 
+    // LISTAR FUNCIONÁRIOS
     public static void listarFuncionarios() {
 
-        if (Registros.totalFuncionarios == 0) {
+        // Verifica se existe pelo menos um funcionário cadastrado
+        if (totalFuncionarios == 0) {
 
             System.out.println("Nenhum funcionário cadastrado.");
+
             return;
         }
 
         System.out.println("\n===== LISTA DE FUNCIONÁRIOS =====");
 
-        for (int i = 0; i < Registros.totalFuncionarios; i++) {
+        // Percorre todos os funcionários cadastrados
+        for (int i = 0; i < totalFuncionarios; i++) {
 
-            Funcionario funcionario = Registros.funcionarios[i];
+            Funcionario funcionario = funcionarios[i];
 
             System.out.println("----------------------");
+
             System.out.println("Nome: " + funcionario.nome);
+
             System.out.println("Matrícula: " + funcionario.matricula);
+
             System.out.println("Contrato: " + funcionario.tipoContrato);
         }
     }
 
+    // BUSCAR FUNCIONÁRIO
     public static void buscarFuncionario() {
 
         System.out.print("Digite a matrícula: ");
 
         String matricula = sc.nextLine();
 
-        for (int i = 0; i < Registros.totalFuncionarios; i++) {
+        // Percorre todos os funcionários cadastrados
+        for (int i = 0; i < totalFuncionarios; i++) {
 
-            Funcionario funcionario = Registros.funcionarios[i];
+            Funcionario funcionario = funcionarios[i];
 
+            // Verifica se a matrícula existe
             if (funcionario.matricula.equalsIgnoreCase(matricula)) {
 
-                System.out.println("\nFuncionário encontrado:");
+                System.out.println("\n===== FUNCIONÁRIO ENCONTRADO =====");
                 System.out.println("Nome: " + funcionario.nome);
                 System.out.println("Matrícula: " + funcionario.matricula);
                 System.out.println("Contrato: " + funcionario.tipoContrato);
@@ -85,11 +107,13 @@ public class CadastroFuncionario {
         System.out.println("Funcionário não encontrado.");
     }
 
+    // VALIDAR MATRÍCULA
     public static boolean matriculaExiste(String matricula) {
 
-        for (int i = 0; i < Registros.totalFuncionarios; i++) {
+        // Percorre o vetor procurando matrícula repetida
+        for (int i = 0; i < totalFuncionarios; i++) {
 
-            if (Registros.funcionarios[i].matricula.equalsIgnoreCase(matricula)) {
+            if (funcionarios[i].matricula.equalsIgnoreCase(matricula)) {
 
                 return true;
             }

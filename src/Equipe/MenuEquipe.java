@@ -1,50 +1,60 @@
-    package Equipe;
+package Equipe;
 
-    import java.util.Scanner;
+import java.util.Scanner;
 
-    public class MenuEquipe {
+public class MenuEquipe {
 
-        static Scanner sc = new Scanner(System.in);
+    // Scanner utilizado para leitura das opções do menu
+    static Scanner sc = new Scanner(System.in);
 
-        public static void menuEquipe() {
+    // MENU DE FUNCIONÁRIOS
+    public static void abrirMenuEquipe() {
 
-            int opcao;
+        int opcao;
 
-            do {
+        do {
 
-                System.out.println("\n===== MENU FUNCIONÁRIOS =====");
-                System.out.println("1 - Cadastrar Funcionário");
-                System.out.println("2 - Listar Funcionários");
-                System.out.println("3 - Buscar Funcionário");
-                System.out.println("0 - Voltar");
+            System.out.println("\n===== MENU FUNCIONÁRIOS =====");
 
-                System.out.print("Opção: ");
+            System.out.println("1 - Cadastrar Funcionário");
+            System.out.println("2 - Listar Funcionários");
+            System.out.println("3 - Buscar Funcionário");
+            System.out.println("0 - Voltar");
 
-                opcao = sc.nextInt();
-                sc.nextLine();
+            System.out.print("Opção: ");
 
-                switch (opcao) {
+            opcao = sc.nextInt();
 
-                    case 1:
-                        CadastroFuncionario.cadastrarFuncionario();
-                        break;
+            // Limpa o buffer do Scanner
+            sc.nextLine();
 
-                    case 2:
-                        CadastroFuncionario.listarFuncionarios();
-                        break;
+            switch (opcao) {
 
-                    case 3:
-                        CadastroFuncionario.buscarFuncionario();
-                        break;
+                case 1:
+                    // Abre o cadastro de funcionários
+                    CadastroFuncionario.cadastrarFuncionario();
+                    break;
 
-                    case 0:
-                        System.out.println("Voltando...");
-                        break;
+                case 2:
+                    // Lista todos os funcionários cadastrados
+                    CadastroFuncionario.listarFuncionarios();
+                    break;
 
-                    default:
-                        System.out.println("Opção inválida.");
-                }
+                case 3:
+                    // Busca um funcionário pela matrícula
+                    CadastroFuncionario.buscarFuncionario();
+                    break;
 
-            } while (opcao != 0);
-        }
+                case 0:
+
+                    System.out.println("Voltando...");
+                    break;
+
+                default:
+
+                    System.out.println("Opção inválida.");
+            }
+
+        } while (opcao != 0);
     }
+}

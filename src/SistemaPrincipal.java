@@ -1,57 +1,91 @@
 import java.util.Scanner;
 
-import Registros.RegistrosService;
-import Registros.MenuRegistro;
 import Equipe.MenuEquipe;
+import Equipe.PersistenciaFuncionario;
+
 import Frota.MenuFrota;
-import Talhoes.menuTalhao;
-import Talhoes.persistenciaTalhao;
-import Registros.Persistencia;
+import Frota.PersistenciaFrota;
+
+import Registros.MenuRegistro;
+import Registros.PersistenciaRegistros;
+
+import Talhoes.MenuTalhao;
+import Talhoes.PersistenciaTalhao;
 
 public class SistemaPrincipal {
 
+    // Scanner utilizado para leitura das opções do sistema
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
 
-        Persistencia.carregarRegistros();
-        persistenciaTalhao.carregarTalhoes();
+        // CARREGAMENTO DOS DADOS
+
+        // Carrega os registros de colheita salvos no CSV
+        PersistenciaRegistros.carregarRegistrosCSV();
+
+        // Carrega os talhões salvos no CSV
+        PersistenciaTalhao.carregarTalhoes();
+
+        // Carrega os funcionários salvos no CSV
+        PersistenciaFuncionario.carregarFuncionariosCSV();
+
+        // Carrega a frota salva no CSV
+        PersistenciaFrota.carregarFrotaCSV();
 
         int opcao;
 
         do {
 
             System.out.println("\n===== SISTEMA FAZENDA =====");
+
             System.out.println("1 - Talhões");
             System.out.println("2 - Funcionários");
             System.out.println("3 - Frota");
             System.out.println("4 - Colheita");
             System.out.println("0 - Sair");
+
             System.out.print("Opção: ");
 
             opcao = sc.nextInt();
+
+            // Limpa o buffer do Scanner
             sc.nextLine();
 
             switch (opcao) {
 
                 case 1:
-                    menuTalhao.menuTalhao();
+
+                    // Abre o menu de talhões
+                    MenuTalhao.abrirMenuTalhao();
                     break;
+
                 case 2:
-                    MenuEquipe.menuEquipe();
+
+                    // Abre o menu de funcionários
+                    MenuEquipe.abrirMenuEquipe();
                     break;
+
                 case 3:
-                    MenuFrota.menuFrota();
+
+                    // Abre o menu da frota
+                    MenuFrota.abrirMenuFrota();
                     break;
+
                 case 4:
-                    MenuRegistro.menuRegistro();
+
+                    // Abre o menu de registros de colheita
+                    MenuRegistro.abrirMenuRegistro();
                     break;
+
                 case 0:
+
                     System.out.println("Sistema encerrado.");
                     break;
 
                 default:
-                    System.out.println("Módulo não implementado.");
+
+                    System.out.println("Opção inválida.");
             }
 
         } while (opcao != 0);

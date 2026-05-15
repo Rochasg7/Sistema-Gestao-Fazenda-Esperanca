@@ -2,50 +2,60 @@ package Talhoes;
 
 import java.util.Scanner;
 
-public class menuTalhao {
+public class MenuTalhao {
 
+    // Scanner utilizado para leitura das opções do menu
     static Scanner sc = new Scanner(System.in);
 
-    // VETOR DE TALHÕES
-    public static Talhao[] talhoes = new Talhao[100];
-
-    // CONTADOR
-    public static int totalTalhoes = 0;
-
-    public static void menuTalhao() {
+    // MENU TALHÕES
+    public static void abrirMenuTalhao() {
 
         int opcao;
 
         do {
 
-            System.out.println("\n1 - Cadastrar Talhão");
+            System.out.println("\n===== MENU TALHÕES =====");
+
+            System.out.println("1 - Cadastrar Talhão");
             System.out.println("2 - Listar Talhões");
             System.out.println("3 - Buscar Talhão");
-            System.out.println("0 - Sair");
+            System.out.println("0 - Voltar");
+
             System.out.print("Opção: ");
 
             opcao = sc.nextInt();
+
+            // Limpa o buffer do Scanner
             sc.nextLine();
 
             switch (opcao) {
 
                 case 1:
-                    cadastrarTalhao.cadastrarTalhao();
+
+                    CadastroTalhao.cadastrarTalhao();
+
                     break;
 
                 case 2:
-                    listarTalhao.listarTalhoes();
+
+                    CadastroTalhao.listarTalhoes();
+
                     break;
 
                 case 3:
-                    buscarTalhao.buscarTalhao();
+
+                    CadastroTalhao.buscarTalhao();
+
                     break;
 
                 case 0:
-                    System.out.println("Encerrado.");
+
+                    System.out.println("Voltando...");
+
                     break;
 
                 default:
+
                     System.out.println("Opção inválida.");
             }
 

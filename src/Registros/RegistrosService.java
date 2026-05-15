@@ -1,100 +1,127 @@
 package Registros;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-
-import Equipe.CadastroFuncionario;
-import Talhoes.menuTalhao;
-import Frota.CadastroFrota;
 
 public class RegistrosService {
 
-    public static ArrayList<RegistroColheita> registros = new ArrayList<>();
+    // Scanner utilizado para leitura dos dados
+    static Scanner sc = new Scanner(System.in);
 
+    // Vetor responsável por armazenar os registros de colheita
+    public static RegistroColheita[] registros =
+            new RegistroColheita[100];
+
+    // Controla quantos registros já foram cadastrados
+    public static int totalRegistros = 0;
+
+    // REGISTRAR COLHEITA
     public static void registrarColheita() {
-        Scanner sc = new Scanner(System.in);
 
-        RegistroColheita registro = new RegistroColheita();
+        // Verifica se o limite máximo foi atingido
+        if (totalRegistros >= 100) {
 
-        System.out.println("Digite a data:");
-        registro.data = sc.nextLine();
+            System.out.println("Limite máximo de registros atingido!");
 
-        System.out.println("Digite a matrícula do funcionário:");
-        registro.matriculaFuncionario = sc.nextLine();
-
-        if (!CadastroFuncionario.matriculaExiste(registro.matriculaFuncionario)) {
-
-            System.out.println("Funcionário não encontrado. ");
             return;
         }
 
-        System.out.println("Digite o código do talhão:");
+        RegistroColheita registro = new RegistroColheita();
+
+        System.out.println("\n===== REGISTRO DE COLHEITA =====");
+
+        // Recebe a data da colheita
+        System.out.print("Digite a data: ");
+        registro.data = sc.nextLine();
+
+        // Recebe a matrícula do funcionário responsável
+        System.out.print("Digite a matrícula do funcionário: ");
+        registro.matriculaFuncionario = sc.nextLine();
+
+        // Recebe o código do talhão
+        System.out.print("Digite o código do talhão: ");
         registro.codigoTalhao = sc.nextLine();
 
-        if (!talhaoExiste(registro.codigoTalhao)) {
-
-        System.out.println("Talhão não encontrado.");
-        return;
-        }
-
-        System.out.println("Digite a placa do trator:");
+        // Recebe a placa do trator utilizado
+        System.out.print("Digite a placa do trator: ");
         registro.placaTrator = sc.nextLine();
 
-        if (!CadastroFrota.placaExiste(registro.placaTrator)) {
+        // Recebe a quantidade de litros colhidos
+        System.out.print("Digite a quantidade de litros: ");
+        registro.litros = Double.parseDouble(sc.nextLine());
 
-        System.out.println("Trator não encontrado.");
-        return;
-        }
-
-        System.out.println("Digite a quantidade de litros:");
-        registro.litros = sc.nextDouble();
-
-        if (!CadastroFrota.validarCapacidade(registro.placaTrator, registro.litros)) {
-
-        System.out.println("Capacidade do trator excedida.");
-        return;
-        }
-
-        sc.nextLine();
-
-        System.out.println("Digite o destino:");
+        // Recebe o destino da carga
+        System.out.print("Digite o destino: ");
         registro.destino = sc.nextLine();
 
-        registros.add(registro);
+        // Armazena o registro no vetor
+        registros[totalRegistros] = registro;
 
-        Persistencia.salvarRegistros();
+        // Incrementa o contador de registros
+        totalRegistros++;
+
+        // Salva os registros no arquivo CSV
+        PersistenciaRegistros.salvarRegistrosCSV();
 
         System.out.println("Registro realizado com sucesso!");
+    }
+
+    // LISTAR REGISTROS
+    public static void listarRegistros() {
+
+        // Verifica se existe pelo menos um registro cadastrado
+        if (totalRegistros == 0) {
+
+            System.out.println("Nenhum registro encontrado.");
+            return;
         }
 
-        public static void listarRegistros() {
+        System.out.println("\n===== LISTA DE REGISTROS =====");
 
-        for (RegistroColheita registro : registros) {
+        // Percorre todos os registros cadastrados
+        for (int i = 0; i < totalRegistros; i++) {
 
-        System.out.println("Data: " + registro.data);
-        System.out.println("Matrícula: " + registro.matriculaFuncionario);
-        System.out.println("Talhão: " + registro.codigoTalhao);
-        System.out.println("Placa: " + registro.placaTrator);
-        System.out.println("Litros: " + registro.litros);
-        System.out.println("Destino: " + registro.destino);
+            RegistroColheita registro = registros[i];
 
-        System.out.println("---------------------------");
-        }
-        }
+            System.out.println("---------------------------");
 
-        public static boolean talhaoExiste(String codigo) {
-
-        for (int i = 0; i < menuTalhao.totalTalhoes; i++) {
-
-        if (menuTalhao.talhoes[i].codigo.equalsIgnoreCase(codigo)) {
-
-            return true;
+            System.out.println("Data: " + registro.data);
+            System.out.println("Matrícula: " + registro.matriculaFuncionario);
+            System.out.println("Talhão: " + registro.codigoTalhao);
+            System.out.println("Placa: " + registro.placaTrator);
+            System.out.println("Litros: " + registro.litros);
+            System.out.println("Destino: " + registro.destino);
         }
     }
 
-    return false;
+    // BUSCAR REGISTRO POR DATA
+    public static void buscarRegistro() {
+
+        System.out.println("\n===== BUSCAR REGISTRO =====");
+
+        System.out.print("Digite a data do registro: ");
+
+        String dataDigitada = sc.nextLine();
+
+        // Percorre todos os registros cadastrados
+        for (int i = 0; i < totalRegistros; i++) {
+
+            RegistroColheita registro = registros[i];
+
+            // Verifica se a data corresponde
+            if (registro.data.equalsIgnoreCase(dataDigitada)) {
+
+                System.out.println("\n===== REGISTRO ENCONTRADO =====");
+
+                System.out.println("Data: " + registro.data);
+                System.out.println("Matrícula: " + registro.matriculaFuncionario);
+                System.out.println("Talhão: " + registro.codigoTalhao);
+                System.out.println("Placa: " + registro.placaTrator);
+                System.out.println("Litros: " + registro.litros);
+                System.out.println("Destino: " + registro.destino);
+                return;
+            }
+        }
+
+        System.out.println("Registro não encontrado.");
+    }
 }
-
-}
-
-
