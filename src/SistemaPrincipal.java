@@ -43,6 +43,7 @@ public class SistemaPrincipal {
             System.out.println("2 - Funcionários");
             System.out.println("3 - Frota");
             System.out.println("4 - Colheita");
+            System.out.println("5 - Mercado do Café");
             System.out.println("0 - Sair");
 
             System.out.print("Opção: ");
@@ -76,6 +77,12 @@ public class SistemaPrincipal {
 
                     // Abre o menu de registros de colheita
                     MenuRegistro.abrirMenuRegistro();
+                    break;
+
+                case 5:
+
+                    // Abre o menu do mercado do café
+                    MercadoCafe.menuMercado();
                     break;
 
                 case 0:
