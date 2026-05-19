@@ -16,16 +16,22 @@ public class CadastroFuncionario {
     // CADASTRAR FUNCIONÁRIO
     public static void cadastrarFuncionario() {
 
+    // Verifica se o limite do vetor foi atingido
+    if (totalFuncionarios >= 100) {
+
+        System.out.println("Limite máximo de funcionários atingido.");
+
+        return;
+    }
+
         Funcionario funcionario = new Funcionario();
 
-        System.out.println("\n===== CADASTRO FUNCIONÁRIO =====");
+        System.out.println("\n===== CADASTRO DE FUNCIONÁRIO =====");
 
         System.out.print("Nome: ");
-
         funcionario.nome = sc.nextLine();
 
         System.out.print("Matrícula: ");
-
         funcionario.matricula = sc.nextLine();
 
         // Verifica se a matrícula já foi cadastrada
@@ -37,7 +43,6 @@ public class CadastroFuncionario {
         }
 
         System.out.print("Tipo de contrato: ");
-
         funcionario.tipoContrato = sc.nextLine();
 
         // Armazena o funcionário no vetor
@@ -104,9 +109,9 @@ public static void buscarFuncionario() {
                 " | Nome: " + funcionario.nome);
     }
 
-    System.out.println("\n===== BUSCAR FUNCIONÁRIO =====");
+    System.out.println("\n===== BUSCA DE FUNCIONÁRIO =====");
 
-    System.out.print("Digite a matrícula: ");
+    System.out.print("Informe a matrícula: ");
 
     String matricula = sc.nextLine();
 

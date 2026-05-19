@@ -21,7 +21,6 @@ public class RegistrosService {
         if (totalRegistros >= 100) {
 
             System.out.println("Limite máximo de registros atingido!");
-
             return;
         }
 

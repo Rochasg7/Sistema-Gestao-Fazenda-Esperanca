@@ -26,7 +26,7 @@ public class CadastroFrota {
         // Cria um novo objeto do tipo Frota
         Frota novoTrator = new Frota();
 
-        System.out.println("\n===== CADASTRO DE TRATOR =====");
+        System.out.println("\n===== CADASTRO DE TRATORES =====");
 
         // Recebe a placa do trator
         System.out.print("Placa: ");
@@ -101,8 +101,8 @@ public class CadastroFrota {
                 " | Capacidade: " + trator.capacidade);
     }
 
-        System.out.println("\n===== BUSCAR TRATOR =====");
-        System.out.print("Digite a placa: ");
+        System.out.println("\n===== BUSCA DE TRATOR =====");
+        System.out.print("Informe a placa: ");
 
         String placaDigitada = sc.nextLine();
 

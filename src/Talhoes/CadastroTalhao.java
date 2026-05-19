@@ -16,9 +16,15 @@ public class CadastroTalhao {
     // CADASTRAR TALHÃO
     public static void cadastrarTalhao() {
 
+        if (totalTalhoes >= 100) {
+
+            System.out.println("Limite máximo de talhões atingido.");
+            return;
+        }
+
         Talhao talhao = new Talhao();
 
-        System.out.println("\n===== CADASTRO TALHÃO =====");
+        System.out.println("\n===== CADASTRO DE TALHÃO =====");
 
         System.out.print("Código: ");
 
@@ -94,7 +100,7 @@ public class CadastroTalhao {
         }
 
         // Mini lista
-        System.out.println("\n===== TALHÕES DISPONÍVEIS =====");
+        System.out.println("\n===== BUSCA DE TALHÃO =====");
 
         for (int i = 0; i < totalTalhoes; i++) {
 
@@ -106,7 +112,7 @@ public class CadastroTalhao {
         }
 
         // Solicita o código
-        System.out.print("\nDigite o código do talhão: ");
+        System.out.print("\nInforme o código do talhão: ");
 
         String codigo = sc.nextLine();
 

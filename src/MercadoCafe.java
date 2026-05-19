@@ -13,7 +13,7 @@ public class MercadoCafe {
     static double quarta = 2120;
     static double quinta = 2145;
 
-    public static void menuMercado() {
+    public static void abrirMenuMercado() {
 
         int opcao;
 

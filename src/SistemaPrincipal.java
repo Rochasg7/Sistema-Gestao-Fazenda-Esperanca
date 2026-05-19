@@ -82,7 +82,7 @@ public class SistemaPrincipal {
                 case 5:
 
                     // Abre o menu do mercado do café
-                    MercadoCafe.menuMercado();
+                    MercadoCafe.abrirMenuMercado();
                     break;
 
                 case 0:
