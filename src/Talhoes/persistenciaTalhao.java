@@ -1,37 +1,38 @@
 package Talhoes;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
-public class persistenciaTalhao {
+public class PersistenciaTalhao {
 
     // SALVAR TALHÕES NO CSV
     public static void salvarTalhoesCSV() {
 
         try {
 
-            // Cria o arquivo CSV onde os dados serão armazenados
-            BufferedWriter writer = new BufferedWriter(
-                    new FileWriter("banco/talhoes.csv"));
+            // Cria/abre o arquivo CSV onde os dados serão salvos
+            FileWriter writer =
+                    new FileWriter("banco/talhoes.csv");
 
             // Percorre todos os talhões cadastrados
             for (int i = 0; i < CadastroTalhao.totalTalhoes; i++) {
 
-                Talhao talhao = CadastroTalhao.talhoes[i];
+                Talhao talhao =
+                        CadastroTalhao.talhoes[i];
 
-                // Escreve os dados do talhão separados por ";"
+                // Escreve os dados separados por ";"
                 writer.write(
                         talhao.codigo + ";" +
-                                talhao.nome + ";" +
-                                talhao.variedadeCafe + ";" +
-                                talhao.estimativaLitros + ";" +
-                                talhao.producaoAtual);
+                        talhao.nome + ";" +
+                        talhao.variedadeCafe + ";" +
+                        talhao.estimativaLitros + ";" +
+                        talhao.producaoAtual
+                );
 
-                // Pula para a próxima linha do arquivo
-                writer.newLine();
+                // Quebra de linha para separar os talhões
+                writer.write("\n");
             }
 
             // Fecha o arquivo após finalizar a escrita
@@ -51,35 +52,42 @@ public class persistenciaTalhao {
         try {
 
             // Abre o arquivo CSV para leitura
-            BufferedReader reader = new BufferedReader(
-                    new FileReader("banco/talhoes.csv"));
+            File arquivo =
+                    new File("banco/talhoes.csv");
 
-            String linha;
+            Scanner leitor =
+                    new Scanner(arquivo);
 
             // Lê linha por linha do arquivo
-            while ((linha = reader.readLine()) != null) {
+            while (leitor.hasNextLine()) {
+
+                String linha = leitor.nextLine();
 
                 // Divide os dados utilizando ";" como separador
                 String[] partes = linha.split(";");
 
                 Talhao talhao = new Talhao();
 
-                // Recupera os dados do arquivo e coloca no objeto
+                // Recupera os dados do arquivo
                 talhao.codigo = partes[0];
                 talhao.nome = partes[1];
                 talhao.variedadeCafe = partes[2];
-                talhao.estimativaLitros = Double.parseDouble(partes[3]);
-                talhao.producaoAtual = Double.parseDouble(partes[4]);
+                talhao.estimativaLitros =
+                        Double.parseDouble(partes[3]);
+                talhao.producaoAtual =
+                        Double.parseDouble(partes[4]);
 
                 // Armazena o talhão no vetor
-                CadastroTalhao.talhoes[CadastroTalhao.totalTalhoes] = talhao;
+                CadastroTalhao.talhoes[
+                        CadastroTalhao.totalTalhoes
+                ] = talhao;
 
                 // Incrementa o contador de talhões
                 CadastroTalhao.totalTalhoes++;
             }
 
-            // Fecha o arquivo após finalizar a leitura
-            reader.close();
+            // Fecha o leitor após finalizar
+            leitor.close();
 
             System.out.println("Talhões carregados com sucesso!");
 

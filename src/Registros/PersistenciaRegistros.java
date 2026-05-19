@@ -1,10 +1,9 @@
 package Registros;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class PersistenciaRegistros {
 
@@ -13,26 +12,28 @@ public class PersistenciaRegistros {
 
         try {
 
-            // Cria o arquivo CSV onde os registros serão armazenados
-            BufferedWriter writer = new BufferedWriter(
-                    new FileWriter("banco/registros.csv"));
+            // Cria/abre o arquivo CSV onde os registros serão salvos
+            FileWriter writer =
+                    new FileWriter("banco/registros.csv");
 
             // Percorre todos os registros cadastrados
             for (int i = 0; i < RegistrosService.totalRegistros; i++) {
 
-                RegistroColheita registro = RegistrosService.registros[i];
+                RegistroColheita registro =
+                        RegistrosService.registros[i];
 
                 // Escreve os dados separados por ";"
                 writer.write(
                         registro.data + ";" +
-                                registro.matriculaFuncionario + ";" +
-                                registro.codigoTalhao + ";" +
-                                registro.placaTrator + ";" +
-                                registro.litros + ";" +
-                                registro.destino);
+                        registro.matriculaFuncionario + ";" +
+                        registro.codigoTalhao + ";" +
+                        registro.placaTrator + ";" +
+                        registro.litros + ";" +
+                        registro.destino
+                );
 
-                // Pula para a próxima linha do arquivo
-                writer.newLine();
+                // Quebra de linha para separar os registros
+                writer.write("\n");
             }
 
             // Fecha o arquivo após finalizar a escrita
@@ -52,36 +53,43 @@ public class PersistenciaRegistros {
         try {
 
             // Abre o arquivo CSV para leitura
-            BufferedReader reader = new BufferedReader(
-                    new FileReader("banco/registros.csv"));
+            File arquivo =
+                    new File("banco/registros.csv");
 
-            String linha;
+            Scanner leitor =
+                    new Scanner(arquivo);
 
             // Lê linha por linha do arquivo
-            while ((linha = reader.readLine()) != null) {
+            while (leitor.hasNextLine()) {
+
+                String linha = leitor.nextLine();
 
                 // Divide os dados utilizando ";" como separador
                 String[] partes = linha.split(";");
 
-                RegistroColheita registro = new RegistroColheita();
+                RegistroColheita registro =
+                        new RegistroColheita();
 
                 // Recupera os dados do arquivo
                 registro.data = partes[0];
                 registro.matriculaFuncionario = partes[1];
                 registro.codigoTalhao = partes[2];
                 registro.placaTrator = partes[3];
-                registro.litros = Double.parseDouble(partes[4]);
+                registro.litros =
+                        Double.parseDouble(partes[4]);
                 registro.destino = partes[5];
 
                 // Armazena o registro no vetor
-                RegistrosService.registros[RegistrosService.totalRegistros] = registro;
+                RegistrosService.registros[
+                        RegistrosService.totalRegistros
+                ] = registro;
 
                 // Incrementa o contador de registros
                 RegistrosService.totalRegistros++;
             }
 
-            // Fecha o arquivo após finalizar a leitura
-            reader.close();
+            // Fecha o leitor após finalizar
+            leitor.close();
 
             System.out.println("Registros carregados com sucesso!");
 

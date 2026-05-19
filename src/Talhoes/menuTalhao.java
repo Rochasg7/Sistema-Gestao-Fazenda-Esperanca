@@ -2,7 +2,7 @@ package Talhoes;
 
 import java.util.Scanner;
 
-public class menuTalhao {
+public class MenuTalhao {
 
     // Scanner utilizado para leitura das opções do menu
     static Scanner sc = new Scanner(System.in);

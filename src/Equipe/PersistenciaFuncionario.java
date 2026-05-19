@@ -1,10 +1,9 @@
 package Equipe;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class PersistenciaFuncionario {
 
@@ -13,11 +12,9 @@ public class PersistenciaFuncionario {
 
         try {
 
-            // Cria o arquivo CSV onde os funcionários serão armazenados
-            BufferedWriter writer =
-                    new BufferedWriter(
-                            new FileWriter("banco/funcionarios.csv")
-                    );
+            // Cria/abre o arquivo CSV onde os funcionários serão salvos
+            FileWriter writer =
+                    new FileWriter("banco/funcionarios.csv");
 
             // Percorre todos os funcionários cadastrados
             for (int i = 0; i < CadastroFuncionario.totalFuncionarios; i++) {
@@ -32,8 +29,8 @@ public class PersistenciaFuncionario {
                         funcionario.tipoContrato
                 );
 
-                // Pula para a próxima linha do arquivo
-                writer.newLine();
+                // Quebra de linha para separar cada funcionário
+                writer.write("\n");
             }
 
             // Fecha o arquivo após finalizar a escrita
@@ -53,17 +50,18 @@ public class PersistenciaFuncionario {
         try {
 
             // Abre o arquivo CSV para leitura
-            BufferedReader reader =
-                    new BufferedReader(
-                            new FileReader("banco/funcionarios.csv")
-                    );
+            File arquivo =
+                    new File("banco/funcionarios.csv");
 
-            String linha;
+            Scanner leitor =
+                    new Scanner(arquivo);
 
             // Lê linha por linha do arquivo
-            while ((linha = reader.readLine()) != null) {
+            while (leitor.hasNextLine()) {
 
-                // Divide os dados utilizando ";" como separador
+                String linha = leitor.nextLine();
+
+                // Divide os dados usando ";" como separador
                 String[] partes = linha.split(";");
 
                 Funcionario funcionario = new Funcionario();
@@ -82,8 +80,8 @@ public class PersistenciaFuncionario {
                 CadastroFuncionario.totalFuncionarios++;
             }
 
-            // Fecha o arquivo após finalizar a leitura
-            reader.close();
+            // Fecha o leitor após finalizar
+            leitor.close();
 
             System.out.println("Funcionários carregados com sucesso!");
 

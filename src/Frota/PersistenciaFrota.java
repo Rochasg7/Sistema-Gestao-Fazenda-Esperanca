@@ -1,10 +1,9 @@
 package Frota;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class PersistenciaFrota {
 
@@ -13,24 +12,24 @@ public class PersistenciaFrota {
 
         try {
 
-            // Cria o arquivo CSV onde os tratores serão armazenados
-            BufferedWriter writer = new BufferedWriter(
-                    new FileWriter("banco/frota.csv")
-            );
+            // Cria/abre o arquivo CSV onde os tratores serão salvos
+            FileWriter writer =
+                    new FileWriter("banco/frota.csv");
 
             // Percorre todos os tratores cadastrados
             for (int i = 0; i < CadastroFrota.totalTratores; i++) {
 
-                Frota trator = CadastroFrota.tratores[i];
+                Frota trator =
+                        CadastroFrota.tratores[i];
 
                 // Escreve os dados separados por ";"
                 writer.write(
                         trator.placa + ";" +
-                                trator.capacidade
+                        trator.capacidade
                 );
 
-                // Pula para a próxima linha do arquivo
-                writer.newLine();
+                // Quebra de linha para separar cada trator
+                writer.write("\n");
             }
 
             // Fecha o arquivo após finalizar a escrita
@@ -50,14 +49,16 @@ public class PersistenciaFrota {
         try {
 
             // Abre o arquivo CSV para leitura
-            BufferedReader reader = new BufferedReader(
-                    new FileReader("banco/frota.csv")
-            );
+            File arquivo =
+                    new File("banco/frota.csv");
 
-            String linha;
+            Scanner leitor =
+                    new Scanner(arquivo);
 
             // Lê linha por linha do arquivo
-            while ((linha = reader.readLine()) != null) {
+            while (leitor.hasNextLine()) {
+
+                String linha = leitor.nextLine();
 
                 // Divide os dados utilizando ";" como separador
                 String[] partes = linha.split(";");
@@ -79,8 +80,8 @@ public class PersistenciaFrota {
                 CadastroFrota.totalTratores++;
             }
 
-            // Fecha o arquivo após finalizar a leitura
-            reader.close();
+            // Fecha o leitor após finalizar
+            leitor.close();
 
             System.out.println("Frota carregada com sucesso!");
 
