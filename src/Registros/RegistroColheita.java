@@ -2,11 +2,11 @@ package Registros;
 
 public class RegistroColheita {
 
-    String data;
-    String matriculaFuncionario;
-    String codigoTalhao;
-    String placaTrator;
-    double litros;
-    String destino;
+    public String data;
+    public String matriculaFuncionario;
+    public String codigoTalhao;
+    public String placaTrator;
+    public double litros;
+    public String destino;
 
 }

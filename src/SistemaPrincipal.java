@@ -9,6 +9,8 @@ import Frota.PersistenciaFrota;
 import Registros.MenuRegistro;
 import Registros.PersistenciaRegistros;
 
+import Relatorios.MenuRelatorios;
+
 import Talhoes.MenuTalhao;
 import Talhoes.PersistenciaTalhao;
 
@@ -44,6 +46,7 @@ public class SistemaPrincipal {
             System.out.println("3 - Frota");
             System.out.println("4 - Colheita");
             System.out.println("5 - Mercado do Café");
+            System.out.println("6 - Relatórios");
             System.out.println("0 - Sair");
 
             System.out.print("Opção: ");
@@ -83,6 +86,10 @@ public class SistemaPrincipal {
 
                     // Abre o menu do mercado do café
                     MercadoCafe.abrirMenuMercado();
+                    break;
+                case 6:
+                    
+                    MenuRelatorios.abrirMenuRelatorios();
                     break;
 
                 case 0:

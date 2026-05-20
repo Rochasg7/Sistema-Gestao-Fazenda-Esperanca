@@ -1,8 +1,8 @@
 package Equipe;
 
 public class Funcionario {
-    String nome;
-    String matricula;
-    String tipoContrato;
+    public String nome;
+    public String matricula;
+    public String tipoContrato;
  
 }

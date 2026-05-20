@@ -1,6 +1,6 @@
 package Frota;
 
 public class Frota {
-    String placa;
-    double capacidade;
+    public String placa;
+    public double capacidade;
 }

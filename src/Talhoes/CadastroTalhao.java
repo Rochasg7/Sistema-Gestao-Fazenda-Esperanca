@@ -8,10 +8,10 @@ public class CadastroTalhao {
     static Scanner sc = new Scanner(System.in);
 
     // Vetor responsável por armazenar os talhões cadastrados
-    static Talhao[] talhoes = new Talhao[100];
+   public static Talhao[] talhoes = new Talhao[100];
 
     // Contador de talhões cadastrados
-    static int totalTalhoes = 0;
+    public static int totalTalhoes = 0;
 
     // CADASTRAR TALHÃO
     public static void cadastrarTalhao() {

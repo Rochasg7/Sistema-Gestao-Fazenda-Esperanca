@@ -8,10 +8,10 @@ public class CadastroFuncionario {
     static Scanner sc = new Scanner(System.in);
 
     // Vetor responsável por armazenar os funcionários
-    static Funcionario[] funcionarios = new Funcionario[100];
+    public static  Funcionario[] funcionarios = new Funcionario[100];
 
     // Contador de funcionários cadastrados
-    static int totalFuncionarios = 0;
+    public static  int totalFuncionarios = 0;
 
     // CADASTRAR FUNCIONÁRIO
     public static void cadastrarFuncionario() {
