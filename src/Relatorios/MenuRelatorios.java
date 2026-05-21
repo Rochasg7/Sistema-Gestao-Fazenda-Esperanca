@@ -17,6 +17,8 @@ public class MenuRelatorios {
             System.out.println("3 - Relatório de Talhões");
             System.out.println("4 - Relatório de Colheita");
             System.out.println("5 - Relatório Geral da Fazenda");
+            System.out.println("6 - Acerto da Quinzena");
+            System.out.println("7 - Relatório de Secagem");
             System.out.println("0 - Voltar");
 
             System.out.print("Opção: ");
@@ -44,6 +46,14 @@ public class MenuRelatorios {
 
                 case 5:
                     RelatorioService.relatorioGeral();
+                    break;
+                case 6:
+                    RelatorioService.relatorioQuinzena();
+                    break;
+
+
+                case 7:
+                    RelatorioService.relatorioSecagem();
                     break;
 
                 case 0:
