@@ -193,14 +193,11 @@ Essa organização foi utilizada para melhorar:
 
 # Tecnologias Utilizadas
 
-* Java
-* Programação Orientada a Objetos
-* Vetores
-* Modularização
-* Arquivos CSV
-* Git
-* GitHub
-* VSCode
+- Java
+- Modularização
+- Vetores
+- Arquivos CSV
+- Git e GitHub
 
 ---
 
