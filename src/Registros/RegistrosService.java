@@ -2,6 +2,13 @@ package Registros;
 
 import java.util.Scanner;
 
+import Equipe.CadastroFuncionario;
+import Equipe.Funcionario;
+import Frota.CadastroFrota;
+import Frota.Frota;
+import Talhoes.CadastroTalhao;
+import Talhoes.Talhao;
+
 public class RegistrosService {
 
     // Scanner utilizado para leitura dos dados
@@ -33,16 +40,177 @@ public class RegistrosService {
         registro.data = sc.nextLine();
 
         // Recebe a matrícula do funcionário responsável
-        System.out.print("Digite a matrícula do funcionário: ");
-        registro.matriculaFuncionario = sc.nextLine();
+       while (true) {
+
+    System.out.print(
+        "Digite a matrícula do funcionário "
+        + "(ou LISTAR): "
+    );
+
+    String matricula = sc.nextLine();
+
+    // LISTAR FUNCIONÁRIOS
+    if (matricula.equalsIgnoreCase("LISTAR")) {
+
+        System.out.println("\n===== FUNCIONÁRIOS =====");
+
+        for (int i = 0;
+             i < CadastroFuncionario.totalFuncionarios;
+             i++) {
+
+            Funcionario funcionario =
+                    CadastroFuncionario.funcionarios[i];
+
+            System.out.println(
+                funcionario.matricula
+                + " - "
+                + funcionario.nome
+            );
+        }
+
+        continue;
+    }
+
+    // VALIDAR EXISTÊNCIA
+    boolean encontrado = false;
+
+    for (int i = 0;
+         i < CadastroFuncionario.totalFuncionarios;
+         i++) {
+
+        if (CadastroFuncionario.funcionarios[i]
+                .matricula
+                .equalsIgnoreCase(matricula)) {
+
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (encontrado) {
+
+        registro.matriculaFuncionario = matricula;
+        break;
+
+    } else {
+
+        System.out.println(
+            "Funcionário não encontrado."
+        );
+    }
+}
 
         // Recebe o código do talhão
-        System.out.print("Digite o código do talhão: ");
-        registro.codigoTalhao = sc.nextLine();
+        while (true) {
+
+    System.out.print(
+        "Digite o código do talhão "
+        + "(ou LISTAR): "
+    );
+
+    String codigo = sc.nextLine();
+
+    if (codigo.equalsIgnoreCase("LISTAR")) {
+
+        System.out.println("\n===== TALHÕES =====");
+
+        for (int i = 0;
+             i < CadastroTalhao.totalTalhoes;
+             i++) {
+
+            Talhao talhao =
+                    CadastroTalhao.talhoes[i];
+
+            System.out.println(
+                talhao.codigo
+                + " - "
+                + talhao.nome
+            );
+        }
+
+        continue;
+    }
+
+    boolean encontrado = false;
+
+    for (int i = 0;
+         i < CadastroTalhao.totalTalhoes;
+         i++) {
+
+        if (CadastroTalhao.talhoes[i]
+                .codigo
+                .equalsIgnoreCase(codigo)) {
+
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (encontrado) {
+
+        registro.codigoTalhao = codigo;
+        break;
+
+    } else {
+
+        System.out.println("Talhão não encontrado.");
+    }
+}
 
         // Recebe a placa do trator utilizado
-        System.out.print("Digite a placa do trator: ");
-        registro.placaTrator = sc.nextLine();
+        while (true) {
+
+    System.out.print(
+        "Digite a placa do trator "
+        + "(ou LISTAR): "
+    );
+
+    String placa = sc.nextLine();
+
+    if (placa.equalsIgnoreCase("LISTAR")) {
+
+        System.out.println("\n===== TRATORES =====");
+
+        for (int i = 0;
+             i < CadastroFrota.totalTratores;
+             i++) {
+
+            Frota trator =
+                    CadastroFrota.tratores[i];
+
+            System.out.println(
+                trator.placa
+            );
+        }
+
+        continue;
+    }
+
+    boolean encontrado = false;
+
+    for (int i = 0;
+         i < CadastroFrota.totalTratores;
+         i++) {
+
+        if (CadastroFrota.tratores[i]
+                .placa
+                .equalsIgnoreCase(placa)) {
+
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (encontrado) {
+
+        registro.placaTrator = placa;
+        break;
+
+    } else {
+
+        System.out.println("Trator não encontrado.");
+    }
+}
 
         // Recebe a quantidade de litros colhidos
         System.out.print("Digite a quantidade de litros: ");
