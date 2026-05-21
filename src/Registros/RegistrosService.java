@@ -157,8 +157,11 @@ public class RegistrosService {
     }
 }
 
-        // Recebe a placa do trator utilizado
-        while (true) {
+// Recebe e valida a placa do trator/caminhão
+// Também captura a capacidade máxima suportada
+double capacidadeTrator = 0;
+
+while (true) {
 
     System.out.print(
         "Digite a placa do trator "
@@ -167,6 +170,7 @@ public class RegistrosService {
 
     String placa = sc.nextLine();
 
+    // Caso o usuário queira listar os tratores
     if (placa.equalsIgnoreCase("LISTAR")) {
 
         System.out.println("\n===== TRATORES =====");
@@ -179,7 +183,11 @@ public class RegistrosService {
                     CadastroFrota.tratores[i];
 
             System.out.println(
-                trator.placa
+                "Placa: "
+                + trator.placa
+                + " | Capacidade: "
+                + trator.capacidade
+                + " litros"
             );
         }
 
@@ -188,6 +196,7 @@ public class RegistrosService {
 
     boolean encontrado = false;
 
+    // Verifica se o trator existe
     for (int i = 0;
          i < CadastroFrota.totalTratores;
          i++) {
@@ -197,25 +206,63 @@ public class RegistrosService {
                 .equalsIgnoreCase(placa)) {
 
             encontrado = true;
+
+            // Salva a placa no registro
+            registro.placaTrator = placa;
+
+            // Captura a capacidade do trator
+            capacidadeTrator =
+                    CadastroFrota.tratores[i]
+                            .capacidade;
+
             break;
         }
     }
 
     if (encontrado) {
 
-        registro.placaTrator = placa;
         break;
 
     } else {
 
-        System.out.println("Trator não encontrado.");
+        System.out.println(
+            "Trator não encontrado."
+        );
     }
 }
 
-        // Recebe a quantidade de litros colhidos
-        System.out.print("Digite a quantidade de litros: ");
-        registro.litros = Double.parseDouble(sc.nextLine());
+// Recebe e valida a quantidade de litros
+// Não permite ultrapassar a capacidade do trator
+while (true) {
 
+    System.out.print(
+        "Digite a quantidade de litros: "
+    );
+
+    double litros =
+            Double.parseDouble(sc.nextLine());
+
+    // Verifica se excede a capacidade
+    if (litros > capacidadeTrator) {
+
+        System.out.println(
+            "Quantidade excede a capacidade "
+            + "do trator."
+        );
+
+        System.out.println(
+            "Capacidade máxima: "
+            + capacidadeTrator
+            + " litros"
+        );
+
+    } else {
+
+        registro.litros = litros;
+        break;
+    }
+}
+     
         // Recebe o destino da carga
         System.out.print("Digite o destino: ");
         registro.destino = sc.nextLine();
