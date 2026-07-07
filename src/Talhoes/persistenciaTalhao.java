@@ -13,23 +13,20 @@ public class PersistenciaTalhao {
         try {
 
             // Cria/abre o arquivo CSV onde os dados serão salvos
-            FileWriter writer =
-                    new FileWriter("banco/talhoes.csv");
+            FileWriter writer = new FileWriter("banco/talhoes.csv");
 
             // Percorre todos os talhões cadastrados
             for (int i = 0; i < CadastroTalhao.totalTalhoes; i++) {
 
-                Talhao talhao =
-                        CadastroTalhao.talhoes[i];
+                Talhao talhao = CadastroTalhao.talhoes[i];
 
                 // Escreve os dados separados por ";"
                 writer.write(
                         talhao.codigo + ";" +
-                        talhao.nome + ";" +
-                        talhao.variedadeCafe + ";" +
-                        talhao.estimativaLitros + ";" +
-                        talhao.producaoAtual
-                );
+                                talhao.nome + ";" +
+                                talhao.variedadeCafe + ";" +
+                                talhao.estimativaLitros + ";" +
+                                talhao.producaoAtual);
 
                 // Quebra de linha para separar os talhões
                 writer.write("\n");
@@ -52,11 +49,9 @@ public class PersistenciaTalhao {
         try {
 
             // Abre o arquivo CSV para leitura
-            File arquivo =
-                    new File("banco/talhoes.csv");
+            File arquivo = new File("banco/talhoes.csv");
 
-            Scanner leitor =
-                    new Scanner(arquivo);
+            Scanner leitor = new Scanner(arquivo);
 
             // Lê linha por linha do arquivo
             while (leitor.hasNextLine()) {
@@ -72,15 +67,11 @@ public class PersistenciaTalhao {
                 talhao.codigo = partes[0];
                 talhao.nome = partes[1];
                 talhao.variedadeCafe = partes[2];
-                talhao.estimativaLitros =
-                        Double.parseDouble(partes[3]);
-                talhao.producaoAtual =
-                        Double.parseDouble(partes[4]);
+                talhao.estimativaLitros = Double.parseDouble(partes[3]);
+                talhao.producaoAtual = Double.parseDouble(partes[4]);
 
                 // Armazena o talhão no vetor
-                CadastroTalhao.talhoes[
-                        CadastroTalhao.totalTalhoes
-                ] = talhao;
+                CadastroTalhao.talhoes[CadastroTalhao.totalTalhoes] = talhao;
 
                 // Incrementa o contador de talhões
                 CadastroTalhao.totalTalhoes++;
