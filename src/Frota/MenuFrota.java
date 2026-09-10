@@ -2,10 +2,12 @@ package Frota;
 
 import java.util.Scanner;
 
+import Util.Entrada;
+
 public class MenuFrota {
 
-    // Scanner utilizado para leitura das opções do menu
-    static Scanner sc = new Scanner(System.in);
+    // Scanner único, compartilhado por todo o sistema (ver Util.Entrada)
+    static Scanner sc = Entrada.sc;
 
     // MENU DA FROTA
     public static void abrirMenuFrota() {

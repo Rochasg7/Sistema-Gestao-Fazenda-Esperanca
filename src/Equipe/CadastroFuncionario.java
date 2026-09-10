@@ -2,10 +2,12 @@
 
     import java.util.Scanner;
 
+    import Util.Entrada;
+
     public class CadastroFuncionario {
 
-        // Scanner utilizado para leitura dos dados
-        static Scanner sc = new Scanner(System.in);
+        // Scanner único, compartilhado por todo o sistema (ver Util.Entrada)
+        static Scanner sc = Entrada.sc;
 
         // Vetor responsável por armazenar os funcionários
         public static Funcionario[] funcionarios = new Funcionario[100];

@@ -2,10 +2,12 @@ package Registros;
 
 import java.util.Scanner;
 
+import Util.Entrada;
+
 public class MenuRegistro {
 
-    // Scanner utilizado para leitura das opções do menu
-    static Scanner sc = new Scanner(System.in);
+    // Scanner único, compartilhado por todo o sistema (ver Util.Entrada)
+    static Scanner sc = Entrada.sc;
 
     // MENU DE REGISTROS DE COLHEITA
     public static void abrirMenuRegistro() {

@@ -2,10 +2,12 @@ package Frota;
 
 import java.util.Scanner;
 
+import Util.Entrada;
+
 public class CadastroFrota {
 
-    // Scanner usado para leitura dos dados digitados pelo usuário
-    static Scanner sc = new Scanner(System.in);
+    // Scanner único, compartilhado por todo o sistema (ver Util.Entrada)
+    static Scanner sc = Entrada.sc;
 
     // Vetor responsável por armazenar todos os tratores cadastrados
     public static Frota[] tratores = new Frota[100];

@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import Util.Entrada;
+
 import Equipe.MenuEquipe;
 import Equipe.PersistenciaFuncionario;
 
@@ -16,8 +18,8 @@ import Talhoes.PersistenciaTalhao;
 
 public class SistemaPrincipal {
 
-    // Scanner utilizado para leitura das opções do sistema
-    static Scanner sc = new Scanner(System.in);
+    // Scanner único, compartilhado por todo o sistema (ver Util.Entrada)
+    static Scanner sc = Entrada.sc;
 
     public static void main(String[] args) {
 

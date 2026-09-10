@@ -2,6 +2,8 @@ package Registros;
 
 import java.util.Scanner;
 
+import Util.Entrada;
+
 import Equipe.CadastroFuncionario;
 import Equipe.Funcionario;
 import Frota.CadastroFrota;
@@ -11,8 +13,8 @@ import Talhoes.Talhao;
 
 public class RegistrosService {
 
-    // Scanner utilizado para leitura dos dados
-    static Scanner sc = new Scanner(System.in);
+    // Scanner único, compartilhado por todo o sistema (ver Util.Entrada)
+    static Scanner sc = Entrada.sc;
 
     // Vetor responsável por armazenar os registros de colheita
     public static RegistroColheita[] registros =

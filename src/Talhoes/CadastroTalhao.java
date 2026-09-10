@@ -2,10 +2,12 @@ package Talhoes;
 
 import java.util.Scanner;
 
+import Util.Entrada;
+
 public class CadastroTalhao {
 
-    // Scanner utilizado para leitura dos dados digitados
-    static Scanner sc = new Scanner(System.in);
+    // Scanner único, compartilhado por todo o sistema (ver Util.Entrada)
+    static Scanner sc = Entrada.sc;
 
     // Vetor responsável por armazenar os talhões cadastrados
    public static Talhao[] talhoes = new Talhao[100];

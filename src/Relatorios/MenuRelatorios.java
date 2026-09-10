@@ -1,8 +1,11 @@
 package Relatorios;
 import java.util.Scanner;
 
+import Util.Entrada;
+
 public class MenuRelatorios {
-    private static Scanner sc = new Scanner(System.in);
+    // Scanner único, compartilhado por todo o sistema (ver Util.Entrada)
+    private static Scanner sc = Entrada.sc;
 
     public static void abrirMenuRelatorios() {
 
@@ -19,6 +22,7 @@ public class MenuRelatorios {
             System.out.println("5 - Relatório Geral da Fazenda");
             System.out.println("6 - Acerto da Quinzena");
             System.out.println("7 - Relatório de Secagem");
+            System.out.println("8 - Fechamento dos Talhões");
             System.out.println("0 - Voltar");
 
             System.out.print("Opção: ");
@@ -54,6 +58,10 @@ public class MenuRelatorios {
 
                 case 7:
                     RelatorioService.relatorioSecagem();
+                    break;
+
+                case 8:
+                    RelatorioService.relatorioTalhao();
                     break;
 
                 case 0:

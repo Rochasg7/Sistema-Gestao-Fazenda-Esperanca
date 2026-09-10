@@ -2,10 +2,12 @@ package Equipe;
 
 import java.util.Scanner;
 
+import Util.Entrada;
+
 public class MenuEquipe {
 
-    // Scanner utilizado para leitura das opções do menu
-    static Scanner sc = new Scanner(System.in);
+    // Scanner único, compartilhado por todo o sistema (ver Util.Entrada)
+    static Scanner sc = Entrada.sc;
 
     // MENU DE FUNCIONÁRIOS
     public static void abrirMenuEquipe() {
